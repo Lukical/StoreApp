@@ -8,6 +8,8 @@ const routes = new Router();
 routes.get("/health", (req, res)=>{
     return res.send({message: 'Connected with sucess!'})
 })
+
+routes.get("/products", ProductsController.getProducts);
 routes.post("/products", schemaValidator(productsSchema), ProductsController.create);
 
 module.exports = routes;
