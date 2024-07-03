@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json.schema.org/draft/2020-12/schema",
+    "title": "CreateProductsSchema",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type" : "string"
+        },
+        "brand": {
+            "type" : "string"
+        },
+        "description": {
+            "type" : "string"
+        },
+        "price": {
+            "type" : "double"
+        },
+        "img": {
+            "type" : "string"
+        }  
+    },
+    "required": ["name", "brand", "description" ,"price"]
+}

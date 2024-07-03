@@ -1,6 +1,6 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable("Products",{
+    await queryInterface.createTable("products",{
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -26,7 +26,7 @@ module.exports = {
       img:{
         type: Sequelize.STRING
       },
-      create_at:{
+      created_at:{
         type: Sequelize.DATE,
         allowNull: false
       },
