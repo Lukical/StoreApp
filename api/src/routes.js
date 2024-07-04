@@ -11,5 +11,6 @@ routes.get("/health", (req, res)=>{
 
 routes.get("/products", ProductsController.getProducts);
 routes.post("/products", schemaValidator(productsSchema), ProductsController.create);
+routes.delete("/products/:id", ProductsController.delete);
 
 module.exports = routes;

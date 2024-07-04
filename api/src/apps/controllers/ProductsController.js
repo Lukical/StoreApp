@@ -31,5 +31,21 @@ class ProductsController{
 
         return res.status(201).json({products, total, totalPages})
     }
+    async delete(req, res){
+        const { id } = req.params;
+        const verifyProduct = await Products.findOne({
+            where: {
+                id
+            }
+        });
+        if(!verifyProduct) return res.status(404).json({message: "Produto não existe!"});
+        const deletedProduct = await Products.destroy({
+            where: {
+                id
+            }
+        })
+        if(!deletedProduct) return res.status(400).json({message: "Falha ao deletar produto!"});
+        return res.status(200).json({message: "Produto deletado!"});
+    }
 }
 module.exports = new ProductsController();
