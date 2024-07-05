@@ -1,4 +1,13 @@
 .container{
     display: flex;
-    min-height: 100%;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 1050px;
+    flex-direction: column;
+}
+.containerProducts{
+    display: grid;
+    grid-template-columns: 230px 230px 230px 230px 230px;
+    grid-gap: 25px;
 }
