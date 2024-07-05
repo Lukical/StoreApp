@@ -1,13 +1,15 @@
 import { Outlet } from 'react-router-dom';
+import Header from '../Header';
+import Footer from '../Footer';
 
-function PaginaPadrao(){
+const PaginaPadrao = () =>{
   return(
     <>
-      <header>Header</header>
+      <Header/>
       <div>
         <Outlet/>
       </div>
-      <footer>Footer</footer>
+      <Footer/>
     </>
   );
 }

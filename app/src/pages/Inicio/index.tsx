@@ -1,6 +1,8 @@
+import styles from './Inicio.module.scss';
+
 function Inicio(){
     return(
-        <section>
+        <section className={styles.container}>
             Inicio
         </section>
     );

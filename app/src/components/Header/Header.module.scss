@@ -1,0 +1,45 @@
+.header{
+    display: flex;
+    padding: 0px 65px;
+    background-color: rgb(36, 94, 195);
+    text-align: center;
+    justify-content: space-between;
+    position: relative;
+}
+.div_name{
+    display: flex;
+}
+.nome{
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+}
+.subnome{
+    color: white;
+    font-size: 20px;
+    font-weight: 300;
+    padding-top: 23px;
+    padding-left: 10px;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+.menu{
+    align-items: center;
+    margin-top: 40px;
+}
+.user_icon{
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 2;
+}
+.dropdown{
+    position: absolute;
+    top: 30px;
+    right: 0;
+    z-index: 1;
+    width: 150px;
+}
