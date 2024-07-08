@@ -45,11 +45,11 @@ const Header: React.FC = () =>{
                         <p>1</p>
                     </div>
                     <div className={styles.div_user}>               
-                        <FaUser className={styles.user_icon} size={25} onClick={()=>setMenu(!menu)} />
+                        <FaUser className={styles.user_icon} size={25} onClick={()=>setMenu(!menu)} data-testid="user_icon"/>
                     </div>
                 </div>
                 {menu &&(
-                    <div className={styles.dropdown} ref={dropdownRef}>
+                    <div className={styles.dropdown} ref={dropdownRef} data-testid="Menu">
                         <Select 
                             className={styles.menu}
                             options={options}
