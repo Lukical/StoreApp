@@ -20,15 +20,13 @@ class ProductsController{
     }
     async getProducts(req, res){
         let { page, size, name, brand} = req.query;
-        console.log(req.query)
-        
+
         page = page ? parseInt(page) : 1;
         size = size ? parseInt(size) : 6;
         name = name ? name : "";
         brand = brand ? brand : "";
-        console.log(brand)
-        const offset = (page - 1) * size;
 
+        const offset = (page - 1) * size;
         const where = {};
         if(name){
             where.name = {
