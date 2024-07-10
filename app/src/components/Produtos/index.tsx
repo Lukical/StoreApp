@@ -3,6 +3,7 @@ import http from '../../data/http';
 import IProduto from '../../types/IProduto';
 import Produto from './Produto';
 import styles from './Produtos.module.scss';
+import { AxiosRequestConfig } from 'axios';
 
 interface IPromise {
     products: IProduto[],
@@ -15,8 +16,8 @@ const Produtos = () => {
     const [total, setTotal] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
 
-    useEffect(() => {
-        http.get<IPromise>("products")
+    const carregarDados = (url: string, opcoes: AxiosRequestConfig = {}) => {
+        http.get<IPromise>(url, opcoes)
             .then(response => {
                 setProdutos(response.data.products);
                 setTotal(response.data.total);
@@ -25,6 +26,10 @@ const Produtos = () => {
             .catch(e => {
                 console.log(e)
             })
+    }
+
+    useEffect(() => {
+        carregarDados("products")
     }, [])
 
     return (
@@ -34,7 +39,7 @@ const Produtos = () => {
             </div>
             <div className={styles.produtosContainer}>
                 {produtos.map(produto =>
-                    <Produto produto={produto}/>
+                    <Produto produto={produto} />
                 )}
             </div>
         </section>

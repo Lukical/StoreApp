@@ -1,3 +1,5 @@
+const { Sequelize } = require("sequelize");
+const { Op } = Sequelize;
 const Products = require("../models/Products");
 
 class ProductsController{
@@ -17,19 +19,38 @@ class ProductsController{
         return res.status(201).json({message: "Produto criado com sucesso!"})
     }
     async getProducts(req, res){
-        let { page, size} = req.query;
+        let { page, size, name, brand} = req.query;
+        console.log(req.query)
         
         page = page ? parseInt(page) : 1;
-        size = size ? parseInt(size) : 5;
-
+        size = size ? parseInt(size) : 6;
+        name = name ? name : "";
+        brand = brand ? brand : "";
+        console.log(brand)
         const offset = (page - 1) * size;
-        const { rows: products, count: total } = await Products.findAndCountAll({
-            offset,
-            limit: size,
-        });
-        const totalPages = Math.ceil(total / size);
 
-        return res.status(201).json({products, total, totalPages})
+        const where = {};
+        if(name){
+            where.name = {
+                [Op.like]: `%${name}%`
+            }
+        }
+        if(brand){
+            where.brand = {
+                [Op.like]: `%${brand}%`
+            };
+        }
+        try {
+            const { rows: products, count: total } = await Products.findAndCountAll({
+                where,
+                offset,
+                limit: size,
+            });
+            const totalPages = Math.ceil(total / size);
+            return res.status(201).json({products, total, totalPages})
+        } catch (error) {
+            return res.status(500).json({message: error})
+        }   
     }
     async delete(req, res){
         const { id } = req.params;
