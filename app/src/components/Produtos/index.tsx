@@ -4,6 +4,7 @@ import IProduto from '../../types/IProduto';
 import Produto from './Produto';
 import styles from './Produtos.module.scss';
 import { AxiosRequestConfig } from 'axios';
+import Filtro from './Filtro';
 
 interface IPromise {
     products: IProduto[],
@@ -31,6 +32,7 @@ const Produtos = () => {
 
     const buscar = (evento: React.FormEvent<HTMLFormElement>) => {
         evento.preventDefault();
+        console.log("Buscando...")
     }
 
     useEffect(() => {
@@ -40,19 +42,12 @@ const Produtos = () => {
     return (
         <section className={styles.container}>   
             <form onSubmit={buscar}>
-                <div className={styles.filtroContainer}>
-                <select>
-                    <option value="">Marcas</option>
-                    <option value="Apple">Apple</option>
-                    <option value="HyperX">HyperX</option>
-                </select>
-                <input type='text' value={busca} onChange={e => setBusca(e.target.value)} />
-                </div>
+                <Filtro busca={busca} setBusca={setBusca}/>
             </form>
             <div className={styles.produtosContainer}>
                 {produtos.map(produto =>
-                    <Produto produto={produto} />
-                )}
+                    <Produto key={produto.id} produto={produto} />
+                )}              
             </div>
         </section>
     );

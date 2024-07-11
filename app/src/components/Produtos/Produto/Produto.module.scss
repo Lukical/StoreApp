@@ -1,13 +1,28 @@
+@use "../../../styles/variaveis" as v;
+
 .container{
     margin-top: 20px;
     border-radius: 10px;
     background-color: white;
+    padding-bottom: 15px;
 }
 .produtoContainer{
     text-align: center;
+}
+.produto{
+    cursor: pointer;
+    margin-bottom: 30px;
 }
 img{
     height: 200px;
     border-radius: 5%;
     object-fit: cover;
+}
+button{
+    border: none;
+    border-radius: 5px;
+    background-color: v.$blue;
+    color: white;
+    padding: 10px 100px;
+    cursor: pointer;
 }

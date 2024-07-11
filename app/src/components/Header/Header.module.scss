@@ -1,7 +1,9 @@
+@use "../../styles/variaveis" as v;
+
 .header{
     display: flex;
     padding: 0px 65px;
-    background-color: rgb(36, 94, 195);
+    background-color: v.$blue;
     text-align: center;
     justify-content: space-between;
     position: relative;

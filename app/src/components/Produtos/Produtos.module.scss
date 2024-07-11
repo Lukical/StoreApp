@@ -7,11 +7,29 @@
     display: grid;
     grid-template-columns: 340px 340px 340px;
     grid-gap: 25px;
-    cursor: pointer;
-}
-.filtroContainer{
-    margin-top: 20px;
-    background-color: white;
-    display: flex;
     justify-content: center;
+}
+select, input{
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 10px;
+}
+select:focus{
+    border: 2px solid black;
+}
+
+@media screen and (max-width: 599.98px) {
+    .produtosContainer{
+        grid-template-columns: 340px;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 819.98px) {
+    .produtosContainer{
+        grid-template-columns: 340px 340px;
+    }
+}
+@media screen and (min-width: 820px) and (max-width: 1099.98px){
+    .produtosContainer{
+        grid-template-columns: 340px 340px 340px;
+    }
 }

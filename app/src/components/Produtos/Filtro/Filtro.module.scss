@@ -1,0 +1,15 @@
+.filtroContainer{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 599.98px) {
+    .filtroContainer{
+        flex-direction: column;
+        width: 90%;
+    }
+}
