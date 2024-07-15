@@ -19,12 +19,13 @@ class ProductsController{
         return res.status(201).json({message: "Produto criado com sucesso!"})
     }
     async getProducts(req, res){
-        let { page, size, name, brand} = req.query;
+        let { page, size, name, sortBy, order} = req.query;
 
         page = page ? parseInt(page) : 1;
         size = size ? parseInt(size) : 6;
         name = name ? name : "";
-        brand = brand ? brand : "";
+        sortBy = sortBy ? sortBy : "name";
+        order = order ? order.toUpperCase() : "ASC" 
 
         const offset = (page - 1) * size;
         const where = {};
@@ -33,16 +34,12 @@ class ProductsController{
                 [Op.like]: `%${name}%`
             }
         }
-        if(brand){
-            where.brand = {
-                [Op.like]: `%${brand}%`
-            };
-        }
         try {
             const { rows: products, count: total } = await Products.findAndCountAll({
                 where,
                 offset,
                 limit: size,
+                order: [[sortBy, order]]
             });
             const totalPages = Math.ceil(total / size);
             return res.status(201).json({products, total, totalPages})

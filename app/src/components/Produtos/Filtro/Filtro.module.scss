@@ -5,6 +5,38 @@
     width: 600px;
     margin-left: auto;
     margin-right: auto;
+
+    label{
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    select, input{
+        border-radius: 10px;
+        border: 1px solid white;
+        padding: 10px;
+    }
+    input{
+        width: 100%;
+    }
+    select:focus{
+        border: 2px solid black;
+    }
+}
+.inputBusca{
+    display: flex;
+
+    button{
+        background-color: transparent;
+        border: none;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+.lupa{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 10px;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 599.98px) {

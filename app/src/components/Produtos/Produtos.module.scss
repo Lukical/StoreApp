@@ -1,3 +1,5 @@
+@use "../../styles/variaveis" as v;
+
 .container{
     display: flex;
     flex-direction: column;
@@ -9,13 +11,23 @@
     grid-gap: 25px;
     justify-content: center;
 }
-select, input{
-    border-radius: 10px;
-    border: 1px solid white;
-    padding: 10px;
-}
-select:focus{
-    border: 2px solid black;
+.paginacao{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    button{
+        display: flex;
+        border: none;
+        border-radius: 5px;
+        background-color: v.$blue;
+        color: white;
+        padding: 5px 100px;
+        margin-left: auto;
+        margin-right: auto;
+        cursor: pointer;
+    }
+
 }
 
 @media screen and (max-width: 599.98px) {
