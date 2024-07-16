@@ -27,12 +27,28 @@
         margin-right: auto;
         cursor: pointer;
     }
-
+    div{
+        display: flex;
+    }
+    label{
+        font-size: 20px;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+    label.active{
+        text-decoration: underline;
+    }
 }
 
 @media screen and (max-width: 599.98px) {
     .produtosContainer{
         grid-template-columns: 340px;
+    }
+    .paginacao{
+        flex-direction: column;
+        div{
+            justify-content: center;
+        }
     }
 }
 @media screen and (min-width: 600px) and (max-width: 819.98px) {

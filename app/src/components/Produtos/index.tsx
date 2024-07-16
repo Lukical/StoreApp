@@ -12,11 +12,11 @@ interface IPromise {
     totalPages: number
 }
 
-interface IBusca{
+interface IBusca {
     page?: string;
     size?: string;
     name?: string;
-    sortBy: string;
+    sortBy?: string;
     order?: string;
 }
 
@@ -44,36 +44,37 @@ const Produtos = () => {
         carregarDados("products", opcoes)
     }
 
-    const changePage = (tipo: number) =>{
-        if((tipo === -1 && page > 1) || (tipo === 1 && page < totalPages)){
-            let pagina =  page + tipo;
+    const changePage = (numero: number, jump: boolean = false) => {
+            let pagina = jump ? numero : page + numero;
+            pagina = Math.max(1, Math.min(pagina, totalPages));
+            if(pagina === page) return;
+            
             setPage(pagina);
             const opcoes = retornaOpcoes(pagina);
             carregarDados("products", opcoes)
-        }       
     }
 
-    const retornaOpcoes = (pagina?: number) =>{
+    const retornaOpcoes = (pagina?: number) => {
         const opcoes = {
             params: {} as IBusca
         }
-        if(busca){
+        if (busca) {
             opcoes.params.name = busca;
         }
-        if(pagina){
+        if (pagina) {
             opcoes.params.page = pagina.toString();
         }
-        switch(ordem){
-            case "nomeDESC":{
+        switch (ordem) {
+            case "nomeDESC": {
                 opcoes.params.order = "DESC";
                 break;
             }
-            case "precoASC":{
+            case "precoASC": {
                 opcoes.params.sortBy = "price";
                 opcoes.params.order = "ASC";
                 break;
             }
-            case "precoDESC":{
+            case "precoDESC": {
                 opcoes.params.sortBy = "price";
                 opcoes.params.order = "DESC";
                 break;
@@ -82,25 +83,52 @@ const Produtos = () => {
         return opcoes;
     }
 
+    const getPaginas = () =>{
+        const maxPaginas = 5;
+        let inicioPaginas = Math.max(page - Math.floor(maxPaginas)/2, 1);
+        let finalPaginas = inicioPaginas + maxPaginas - 1;
+
+        if(finalPaginas > totalPages){
+            finalPaginas = totalPages;
+            inicioPaginas = Math.max(finalPaginas - maxPaginas + 1, 1);
+        }
+        const paginas = [];
+        for (let i = inicioPaginas; i <= finalPaginas; i++){
+            paginas.push(
+                <label 
+                    key={`pagina${i}`}
+                    className={page === i ? styles.active : ''}
+                    onClick={()=> changePage(i, true)}
+                >
+                    {i}
+                </label>
+            )
+        }
+        return paginas;
+    }
+
     useEffect(() => {
         carregarDados("products")
     }, [])
 
     return (
-        <section className={styles.container}>   
+        <section className={styles.container}>
             <form onSubmit={buscar}>
-                <Filtro busca={busca} setBusca={setBusca} 
-                    ordem={ordem} setOrdem={setOrdem}                
+                <Filtro busca={busca} setBusca={setBusca}
+                    ordem={ordem} setOrdem={setOrdem}
                 />
             </form>
             <div className={styles.produtosContainer}>
                 {produtos.map(produto =>
                     <Produto key={produto.id} produto={produto} />
-                )}              
+                )}
             </div>
             <div className={styles.paginacao}>
-                <button onClick={e => changePage(-1)}>Pagina Anterior</button>
-                <button onClick={e => changePage(1)}>Proxima Pagina</button>
+                <button onClick={() => changePage(-1)}>Pagina Anterior</button>
+                <div>
+                    {getPaginas()}
+                </div>           
+                <button onClick={() => changePage(1)}>Proxima Pagina</button>
             </div>
         </section>
     );
