@@ -1,0 +1,13 @@
+.content{
+    position: absolute;
+    right: -100%;
+    background-color: white;
+    height: 100%;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: right 0.5s ease;
+}
+.content.show{
+    right: 0;
+}
