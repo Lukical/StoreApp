@@ -12,7 +12,7 @@ const Filtro = ({busca, setBusca, ordem, setOrdem} : FiltroProps) =>{
     return(
         <div className={styles.filtroContainer}>
         <label htmlFor="ordenar">Ordenar: </label>
-        <select id="ordenar" value={ordem} onChange={e => setOrdem(e.target.value)}>
+        <select data-testid="selectOrder" id="ordenar" value={ordem} onChange={e => setOrdem(e.target.value)}>
             <option value="">Escolha</option>
             <option value="nomeASC">Nome crescente</option>
             <option value="nomeDESC">Nome decrescente</option>
@@ -21,8 +21,8 @@ const Filtro = ({busca, setBusca, ordem, setOrdem} : FiltroProps) =>{
         </select>
         <label htmlFor="procurar">Procurar: </label>
         <div className={styles.inputBusca}>
-            <input id="procurar" type='text' value={busca} onChange={e => setBusca(e.target.value)} />
-            <button type="submit">
+            <input id="procurar" type='text' placeholder="Buscar" value={busca} onChange={e => setBusca(e.target.value)} />
+            <button data-testid="botaoSubmit" type="submit">
                 <FaSearch className={styles.lupa} size={25}/>
             </button>
         </div>
