@@ -1,13 +1,57 @@
-.content{
+@use "../../../styles/variaveis" as v;
+.modalContent{
     position: absolute;
     right: -100%;
-    background-color: white;
+    background-color: v.$light-grey;
     height: 100%;
-    padding: 20px;
-    width: 30%;
+    width: 25%;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: right 0.5s ease;
+
+    h3{
+        background-color: white;
+        margin: 0;
+        padding: 20px;
+        width: 100%;
+        font-weight: 100;
+        font-size: 1.1em;
+    }
+    .carrinhoProdutos{
+        margin-top: 20px;
+        padding: 20px;
+    }
+    .totalCarrinho{
+        display: flex;
+        background-color: white;
+        padding: 20px;
+        margin: 0 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        justify-content: space-between;
+    }
+    label{
+        font-size: 1.2em;
+    }
+    .buttonPedido{
+        margin-top: 20px;
+        background-color: green;
+        color: white;
+        padding: 30px;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        font-size: 0.9em;
+    }
+    .buttonFechar{
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        margin-top: 5px;
+        cursor: pointer;
+        color: #ff5800;
+    }
+
 }
-.content.show{
+.modalContent.show{
     right: 0;
 }

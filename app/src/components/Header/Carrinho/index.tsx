@@ -9,10 +9,17 @@ interface ICarrinhoProps{
 const Carrinho = ({carrinhoAberto, setCarrinhoAberto}: ICarrinhoProps) =>{
     return(
         <Modal isOpen={carrinhoAberto} onClose={() => setCarrinhoAberto(false)}>
-            <div className={`${styled['content']} ${carrinhoAberto ? styled['show'] : ''}`} onClick={(e) => e.stopPropagation()}>
-                <div>Modal</div>
-                <div>carrinho</div>
-                <button onClick={() => setCarrinhoAberto(false)}>Fechar</button>
+            <div className={`${styled['modalContent']} ${carrinhoAberto ? styled['show'] : ''}`} onClick={(e) => e.stopPropagation()}>
+                <h3>Resumo do carrinho</h3>
+                <div className={styled.carrinhoProdutos}>
+                    Produtos
+                </div>
+                <div className={styled.totalCarrinho}>
+                    <label>Total </label>
+                    <label>R$: 100,00</label>
+                </div>
+                <button className={styled.buttonPedido}>FECHAR PEDIDO</button>
+                <button className={styled.buttonFechar} onClick={() => setCarrinhoAberto(false)}>Continuar Comprando</button>
             </div>
         </Modal>
     )
