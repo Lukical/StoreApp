@@ -8,6 +8,7 @@ const Header: React.FC = () =>{
     const [menu, setMenu] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const[carrinhoAberto, setCarrinhoAberto] = useState(false);
+    const[tamCarrinho, setTamCarrinho] = useState(0);
 
     interface IOption{
         value: string,
@@ -45,7 +46,7 @@ const Header: React.FC = () =>{
                     <div className={styles.user_area}>
                         <div className={styles.div_cart} onClick={()=>setCarrinhoAberto(true)}>
                             <FaShoppingCart className={styles.user_cart} size={25}/>
-                            <p>1</p>
+                            <p>{tamCarrinho}</p>
                         </div>
                         <div className={styles.div_user}>               
                             <FaUser className={styles.user_icon} size={25} onClick={()=>setMenu(!menu)} data-testid="user_icon"/>
@@ -65,7 +66,11 @@ const Header: React.FC = () =>{
                     )}    
                 </nav>        
             </nav>
-            <Carrinho carrinhoAberto={carrinhoAberto} setCarrinhoAberto={setCarrinhoAberto}/>
+            <Carrinho 
+                carrinhoAberto={carrinhoAberto} 
+                setCarrinhoAberto={setCarrinhoAberto}
+                setTamCarrinho={setTamCarrinho}
+            />
         </>
     );
 }
