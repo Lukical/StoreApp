@@ -1,0 +1,46 @@
+.carrinhoProduto{
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    .carrinhoRemover{
+        display: flex;
+        justify-content: end;      
+        button{
+            background-color: transparent;
+            border: 1px solid red;
+            color: red;
+            cursor: pointer;
+        }
+    }
+    .carrinhoTop{
+        display: flex;
+        img{
+            width: 80px;
+        }
+        label{
+            margin-top: auto;
+            margin-bottom: auto;
+            padding-left: 10px;
+        }
+    }
+    .carrinhoBottom{
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid rgb(183, 177, 177);
+        padding-top: 10px;
+        .carrinhoQtd{     
+            label{
+                padding: 3px 5px;
+                background-color: rgb(200, 200, 200);
+                border-radius: 5px;
+            }
+            button{
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
