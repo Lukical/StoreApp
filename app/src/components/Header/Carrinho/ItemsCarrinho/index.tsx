@@ -25,7 +25,7 @@ const ItemsCarrinho = (items: IItemsProps)  => {
                 <li key={carrinho.produto.id}>
                     <div className={styled.carrinhoProduto}>
                         <div className={styled.carrinhoRemover}>
-                            <button onClick={() => removeProduto(carrinho.produto, true)}>x</button>
+                            <button data-testid={`removerTudoTeste${carrinho.produto.id}`} onClick={() => removeProduto(carrinho.produto, true)}>x</button>
                         </div>
                         <div className={styled.carrinhoTop}>
                             <img src={carrinho.produto.img} alt={carrinho.produto.name} />
@@ -33,11 +33,11 @@ const ItemsCarrinho = (items: IItemsProps)  => {
                         </div>
                         <div className={styled.carrinhoBottom}>
                             <div className={styled.carrinhoQtd}>
-                                <button onClick={() => removeProduto(carrinho.produto)}>-</button>
+                                <button data-testid={`removerTeste${carrinho.produto.id}`} onClick={() => removeProduto(carrinho.produto)}>-</button>
                                 <label>{carrinho.quantidade}</label>
-                                <button onClick={() => adicionaProduto(carrinho.produto)}>+</button>
+                                <button data-testid={`adicionarTeste${carrinho.produto.id}`} onClick={() => adicionaProduto(carrinho.produto)}>+</button>
                             </div>
-                            <label>{(carrinho.produto.price).toFixed(2)}</label>
+                            <label>{(carrinho.produto.price * carrinho.quantidade).toFixed(2)}</label>
                         </div>
                     </div>
                 </li>

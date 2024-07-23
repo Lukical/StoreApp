@@ -1,9 +1,10 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Header from './Header';
+import { RecoilRoot } from 'recoil';
 
 describe('Header', () => {
   test('header mostra nome', () => {
-    render(<Header />);
+    render(<RecoilRoot><Header /></RecoilRoot>);
     const nome = screen.getByRole('heading', { level: 1, name: 'Store' });
     expect(nome).toBeInTheDocument();
     const subNome = screen.getByText('App');
@@ -11,7 +12,7 @@ describe('Header', () => {
   });
 
   test('ao clicar botao usuario exibir menu e ao clicar de novo esconder menu', async () => {
-    render(<Header />);
+    render(<RecoilRoot><Header /></RecoilRoot>);
     const userIcon = screen.getByTestId('user_icon');
 
     fireEvent.click(userIcon);
@@ -29,7 +30,7 @@ describe('Header', () => {
     });
   });
   test("Fechando menu clicando para fora", async ()=>{
-    render(<Header />);
+    render(<RecoilRoot><Header /></RecoilRoot>);
     const userIcon = screen.getByTestId('user_icon');
     fireEvent.click(userIcon);
 
