@@ -1,16 +1,16 @@
 version: '3.3'
 
 services:
-  #frontend:
-    #container_name: frontend
-    #build: ./app/
-    #restart: always
-    #ports:
-      #- "3000:3000" # Porta em que o frontend será exposto
-    #depends_on:
-     # - backend
-    #networks:
-      #- storeappnetwork
+  frontend:
+    container_name: frontend
+    build: ./app/
+    restart: always
+    ports:
+      - "3000:3000" # Porta em que o frontend será exposto
+    depends_on:
+      - backend
+    networks:
+      - storeappnetwork
 
   backend:
     container_name: backend

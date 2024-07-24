@@ -18,7 +18,9 @@ const Produto = ({produto} : ItemProps) =>{
             <div className={styles.produtoContainer}>
                 <div className={styles.produto}>
                     <img src={produto.img} alt={produto.name}/>
-                    <h1>{produto.name}</h1>
+                    <div className={styles.produtoName}>
+                        <h1>{produto.name}</h1>
+                    </div>                  
                     <p>R$ {produto.price.toFixed(2)}</p>
                 </div>
                 <button onClick={()=>adicionaProduto(produto)}>

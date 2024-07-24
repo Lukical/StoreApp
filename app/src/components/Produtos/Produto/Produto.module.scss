@@ -1,15 +1,16 @@
 @use "../../../styles/variaveis" as v;
 
-.container{
+.container {
     margin-top: 20px;
     border-radius: 10px;
     background-color: white;
     padding-bottom: 15px;
 }
-.produtoContainer{
+
+.produtoContainer {
     text-align: center;
 
-    button{
+    button {
         display: flex;
         border: none;
         border-radius: 5px;
@@ -20,24 +21,39 @@
         margin-right: auto;
         cursor: pointer;
     }
-    img{
+
+    img {
         height: 200px;
         border-radius: 5%;
         object-fit: cover;
     }
 }
-.produto{
+
+.produto {
     cursor: pointer;
     margin-bottom: 30px;
 
-    p{
+    p {
         font-size: 22px;
         font-weight: bold;
         color: v.$blue;
     }
+
+    .produtoName {
+        height: 120px;
+        padding: 5px;
+
+        h1 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            white-space: normal;
+        }
+    }
 }
 
-.user_cart{
+.user_cart {
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
