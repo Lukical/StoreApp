@@ -2,6 +2,11 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Header from './Header';
 import { RecoilRoot } from 'recoil';
 
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useNavigate: jest.fn(),
+}));
+
 describe('Header', () => {
   test('header mostra nome', () => {
     render(<RecoilRoot><Header /></RecoilRoot>);
@@ -30,7 +35,9 @@ describe('Header', () => {
     });
   });
   test("Fechando menu clicando para fora", async ()=>{
-    render(<RecoilRoot><Header /></RecoilRoot>);
+    render(<RecoilRoot>
+        <Header />
+    </RecoilRoot>);
     const userIcon = screen.getByTestId('user_icon');
     fireEvent.click(userIcon);
 

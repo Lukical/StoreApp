@@ -3,12 +3,14 @@ import styles from "./Header.module.scss";
 import { FaUser, FaShoppingCart } from "react-icons/fa";
 import Select, { SingleValue } from 'react-select';
 import Carrinho from "./Carrinho";
+import { useNavigate } from "react-router-dom";
 
 const Header: React.FC = () =>{
     const [menu, setMenu] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const[carrinhoAberto, setCarrinhoAberto] = useState(false);
     const[tamCarrinho, setTamCarrinho] = useState(0);
+    const navigate = useNavigate();
 
     interface IOption{
         value: string,
@@ -38,7 +40,7 @@ const Header: React.FC = () =>{
     return (
         <>
             <nav className={styles.header}>
-                <div className={styles.div_name}>
+                <div className={styles.div_name} onClick={()=>navigate("/")}>
                     <h1 className={styles.nome}>Store</h1>
                     <p className={styles.subnome}>App</p>
                 </div>        
