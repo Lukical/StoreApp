@@ -7,9 +7,11 @@ O StoreApp é um app para a realização de compras do usuario em uma loja virtu
 ## Rodando Aplicação
 
 Executando o app:
+ - Buildar Container
 ```bash
-  # Buildar Container
   docker-compose build
-  # Iniciar Container
+```
+- Iniciar Container
+```bash
   docker-compose up -d
 ```
