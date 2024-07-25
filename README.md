@@ -15,3 +15,14 @@ Executando o app:
 ```bash
   docker-compose up -d
 ```
+
+# Algumas telas do projeto
+
+## Home
+![imagem1](./imagens/imagem1.png)
+
+## Carrinho lateral
+![imagem2](./imagens/imagem2.png)
+
+## Página Carrinho
+![imagem3](./imagens/imagem3.png)
